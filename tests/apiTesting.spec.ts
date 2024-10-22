@@ -39,3 +39,10 @@ test('API PUT Request', async ({ request })=>{
     expect(text).toContain('Tester');
     console.log(await response.json());
 })
+
+test('API DELETE Request', async({ request })=>{
+    const response = await request.delete('https://reqres.in/api/users/2');
+    expect(response.status()).toBe(204);
+    const text = await response.text();
+    expect(text).toBe('');
+})
