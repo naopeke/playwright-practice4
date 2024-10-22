@@ -1,2 +1,2 @@
-# playwright-practice4
-API testing
+# API testing
+API testing in https://reqres.in/
