@@ -25,3 +25,17 @@ test('API POST Request', async ({ request })=>{
     expect(text).toContain('Lati');
     console.log(await response.json());
 })
+
+test('API PUT Request', async ({ request })=>{
+    const response = await request.put('https://reqres.in/api/users/2',{
+        data : 
+        {
+            "name": "Lati",
+            "job": "Tester"
+        }
+    });
+    expect(response.status()).toBe(200);
+    const text = await response.text();
+    expect(text).toContain('Tester');
+    console.log(await response.json());
+})
