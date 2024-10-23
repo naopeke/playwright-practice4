@@ -37,7 +37,8 @@ test('API POST Request_02', async ({ request })=>{
     expect(response.status()).toBe(400);
 
     const jsonResponse = await response.json();
-    expect (jsonResponse).toHaveProperty('error');
+    expect (jsonResponse).toHaveProperty('error'); //オブジェクトが特定のプロパティを持っているかどうかを確認
+    expect (jsonResponse).toHaveProperty('error', 'Missing password');
     expect (jsonResponse.error).toBe('Missing password');
     console.log(jsonResponse);
 
