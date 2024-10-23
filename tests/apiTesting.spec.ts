@@ -12,7 +12,7 @@ test('API GET Request', async ({ request })=>{
     console.log(await response.json());
 })
 
-test('API POST Request', async ({ request })=>{
+test('API POST Request_01', async ({ request })=>{
     const response = await request.post('https://reqres.in/api/users',{
         data:
             {
@@ -24,6 +24,23 @@ test('API POST Request', async ({ request })=>{
     const body = await response.text();
     expect(body).toContain('Lati');
     console.log(await response.json());
+})
+
+test('API POST Request_02', async ({ request })=>{
+    const response = await request.post('https://reqres.in/api/register', {
+        data : 
+        {
+            "email": "sydney@fife"
+        }
+    });
+
+    expect(response.status()).toBe(400);
+
+    const jsonResponse = await response.json();
+    expect (jsonResponse).toHaveProperty('error');
+    expect (jsonResponse.error).toBe('Missing password');
+    console.log(jsonResponse);
+
 })
 
 test('API PUT Request', async ({ request })=>{
