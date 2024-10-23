@@ -6,8 +6,8 @@ test('API GET Request', async ({ request })=>{
     
     expect(response.status()).toBe(200);
     
-    const text = await response.text();
-    expect(text).toContain('Janet');
+    const body = await response.text();
+    expect(body).toContain('Janet');
     
     console.log(await response.json());
 })
@@ -21,8 +21,8 @@ test('API POST Request', async ({ request })=>{
             }
     });
     expect(response.status()).toBe(201);
-    const text = await response.text();
-    expect(text).toContain('Lati');
+    const body = await response.text();
+    expect(body).toContain('Lati');
     console.log(await response.json());
 })
 
@@ -35,14 +35,14 @@ test('API PUT Request', async ({ request })=>{
         }
     });
     expect(response.status()).toBe(200);
-    const text = await response.text();
-    expect(text).toContain('Tester');
+    const body = await response.text();
+    expect(body).toContain('Tester');
     console.log(await response.json());
 })
 
 test('API DELETE Request', async({ request })=>{
     const response = await request.delete('https://reqres.in/api/users/2');
     expect(response.status()).toBe(204);
-    const text = await response.text();
-    expect(text).toBe('');
+    const body = await response.text();
+    expect(body).toBe('');
 })
