@@ -1,20 +1,31 @@
 // https://playwright.dev/docs/mock
+// https://demo.playwright.dev/api-mocking/
 import { test, expect } from '@playwright/test';
 
-test('static content on movie and dynamic votes through mocking', {
-    tag: '@mocking',
-}, async ({ page }) => {
-    await page.route (
-        '*/**/**718821?append_to_response=videos',
-        async (route)=> {
-            const response = await route.fetch();
-            const json = await response.json();
-            json.vote_average = 7.02;
+test.describe('Mock APIs', ()=>{
 
-            await route.fulfill({ response, json });
-        }
-    );
+    test("mocks a fruit and doesn't call api", async ({ page })=>{
+        await page.route('*/**/api/v1/fruits', async (route)=>{
+            const json = [{ name: 'Strawberry', id: 21 }];
+            await route.fulfill({json});
+        })
+        await page.goto('https://demo.playwright.dev/api-mocking');
+        await expect(page.getByText('Strawberry')).toBeVisible();
+    })
 
-    await page.goto('movie?id=718221&page=1')
-}
-)
+
+    test("gets the json from api and adds a new fruit", { tag: '@mocking',}, async ({ page }) => {
+        await page.route ('*/**/api/v1/fruits', async (route)=> {
+                const response = await route.fetch();
+                const json = await response.json();
+                json.push({ name: 'Loquat', id: 100 });
+                await route.fulfill({ response, json });
+            }
+        );
+        await page.goto('https://demo.playwright.dev/api-mocking');
+        await expect(page.getByText('Loquat', {exact: true})).toBeVisible();
+    }
+    )
+
+    
+})
