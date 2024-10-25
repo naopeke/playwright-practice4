@@ -70,4 +70,16 @@ test.describe('Automation Exercise', ()=>{
         const json = await response.json();
         expect(json).toHaveProperty('User exists!');
     })
+
+    test('API 8: POST To Verify Login without email parameter', async({ request })=>{
+        const response = await request.post('https://automationexercise.com/api/verifyLogin', {
+            data : {
+                password : '123456'
+            }
+        });
+
+        expect(response.status()).toBe(400);
+        const json = await response.json();
+        expect(json).toHaveProperty('Bad request, email or password parameter is missing in POST request.');
+    })
 })
