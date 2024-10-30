@@ -1,11 +1,19 @@
 //https://www.automationexercise.com/api_list
 
-import { test, expect } from '@playwright/test';
+import { test, expect, APIRequestContext } from '@playwright/test';
+import ProductPage from '../pom/productPage';
 
 test.describe('Automation Exercise', ()=>{
 
+    let productPage: ProductPage;
+
+    test.beforeEach(async ({ request }: { request: APIRequestContext }) => {
+        productPage = new ProductPage(request);
+    });
+
     test('API 1: Get All Products List', async ({ request })=>{
-        const response = await request.get('https://automationexercise.com/api/productsList');
+        // const response = await request.get('https://automationexercise.com/api/productsList');
+        const response = await productPage.getAllProducts();
         expect(response.status()).toBe(200);
         
         const json = await response.json();
