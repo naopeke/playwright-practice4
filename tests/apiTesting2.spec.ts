@@ -7,6 +7,7 @@ test.describe('Automation Exercise', ()=>{
 
     let productPage: ProductPage;
 
+    //テストが始まるたびに新しいProductPageインスタンスを作成し、requestコンテキストを渡すことで、各テストでAPIリクエストを行う準備をします。
     test.beforeEach(async ({ request }: { request: APIRequestContext }) => {
         productPage = new ProductPage(request);
     });
