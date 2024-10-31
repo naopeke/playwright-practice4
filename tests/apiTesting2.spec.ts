@@ -22,7 +22,7 @@ test.describe('Automation Exercise', ()=>{
     });
 
     test('API 2: POST To All Products List', async({ request})=>{
-        const response = await request.post('https://automationexercise.com/api/productsList');
+        const response = await productPage.postToProductsList({});
         expect (response.status()).toBe(405);
         
         const json = await response.json();
