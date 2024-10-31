@@ -30,7 +30,7 @@ test.describe('Automation Exercise', ()=>{
     })
 
     test('API 3: Get All Brands List', async ({ request })=>{
-        const response = await request.get('https://automationexercise.com/api/brandsList');
+        const response = await productPage.getAllBrands();
         expect(response.status()).toBe(200);
 
         const json = await response.json();

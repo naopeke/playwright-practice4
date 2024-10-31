@@ -16,6 +16,11 @@ class ProductPage {
         const response = await this.request.post('https://automationexercise.com/api/productsList', { data });
         return response;
     }
+
+    async getAllBrands(){
+        const response = await this.request.get('https://automationexercise.com/api/brandsList');
+        return response;
+    }
 }
 
 export default ProductPage;
