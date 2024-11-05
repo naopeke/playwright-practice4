@@ -31,6 +31,16 @@ class ProductPage {
         const response = await this.request.post('https://automationexercise.com/api/searchProduct', { data });
         return response;
     }
+
+    async postSearchProductsWithoutParam(){
+        const response = await this.request.post('https://automationexercise.com/api/searchProduct');
+        return response;
+    }
+
+    async postToVerifyLogin(data: Record<string, any>){
+        const response = await this.request.post('https://automationexercise.com/api/verifyLogin', { data });
+        return response;
+    }
 }
 
 export default ProductPage;
