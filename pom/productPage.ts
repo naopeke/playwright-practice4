@@ -41,6 +41,20 @@ class ProductPage {
         const response = await this.request.post('https://automationexercise.com/api/verifyLogin', { data });
         return response;
     }
+
+    async postToVerifyLoginWitoutParam(){
+        const response = await this.request.post('https://automationexercise.com/api/verifyLogin');
+        return response;
+    }
+    
+    async deleteVeryfyLogin(){
+        const response = await this.request.delete('https://automationexercise.com/api/verifyLogin');
+        return response;
+    }
+
+    async postToVerifyLoginWithInvalidData(data:Record<string,any>){
+        const response = await this.request.post('https://automationexercise.com/api/verifyLogin', { data })
+    }
 }
 
 export default ProductPage;
