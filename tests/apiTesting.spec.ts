@@ -44,7 +44,7 @@ test('API POST Request_02', async ({ request })=>{
 
 })
 
-test('API PUT Request', async ({ request })=>{
+test('API PUT Request_03', async ({ request })=>{
     const response = await request.put('https://reqres.in/api/users/2',{
         data : 
         {
@@ -58,7 +58,7 @@ test('API PUT Request', async ({ request })=>{
     console.log(await response.json());
 })
 
-test('API DELETE Request', async({ request })=>{
+test('API DELETE Request_04', async({ request })=>{
     const response = await request.delete('https://reqres.in/api/users/2');
     expect(response.status()).toBe(204);
     const body = await response.text();
