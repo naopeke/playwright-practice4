@@ -111,4 +111,31 @@ test.describe('Automation Exercise', ()=>{
         const json = await response.json();
         expect(json).toHaveProperty('User not found!');
     })
+
+    test('API 11: POST To Create/Register User Account', async({ request })=>{
+        const response = await request.post('https://automationexercise.com/api/createAccount', {
+            data: {
+                name:'taro',
+                email: 'test@example.com',
+                password: '12345',
+                title: 'Mr',
+                birth_date: 10,
+                birth_month: 10,
+                birth_year: 1990,
+                firstname: 'John',
+                lastname: 'Doe',
+                company: 'Iberia',
+                address1: 'Calle Marqués de Larios',
+                address2: 'Málaga',
+                country: 'Spain',
+                zipcode: 29005,
+                state: 'Málaga',
+                city: 'Málaga',
+                mobile_number: 34910000000
+            }
+        });
+        expect(response.status()).toBe(201);
+        const json = response.json();
+        expect(json).toHaveProperty('User created!');
+    })
 })

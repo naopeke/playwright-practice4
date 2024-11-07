@@ -55,6 +55,8 @@ class ProductPage {
     async postToVerifyLoginWithInvalidData(data:Record<string,any>){
         const response = await this.request.post('https://automationexercise.com/api/verifyLogin', { data })
     }
+
+    
 }
 
 export default ProductPage;
