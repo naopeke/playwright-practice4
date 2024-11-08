@@ -126,7 +126,7 @@ test.describe('Automation Exercise', ()=>{
                 lastname: 'Doe',
                 company: 'Iberia',
                 address1: 'Calle Marqués de Larios',
-                address2: 'Málaga',
+                address2: 'Portal3, 5-1',
                 country: 'Spain',
                 zipcode: 29005,
                 state: 'Málaga',
@@ -137,5 +137,9 @@ test.describe('Automation Exercise', ()=>{
         expect(response.status()).toBe(201);
         const json = response.json();
         expect(json).toHaveProperty('User created!');
+    })
+
+    test('API 12: DELETE METHOD To Delete User Account', async({ request })=>{
+
     })
 })

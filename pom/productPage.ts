@@ -56,7 +56,10 @@ class ProductPage {
         const response = await this.request.post('https://automationexercise.com/api/verifyLogin', { data })
     }
 
-    
+    async postUserAccount(){
+        
+    }
+
 }
 
 export default ProductPage;
