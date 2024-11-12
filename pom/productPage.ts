@@ -53,11 +53,13 @@ class ProductPage {
     }
 
     async postToVerifyLoginWithInvalidData(data:Record<string,any>){
-        const response = await this.request.post('https://automationexercise.com/api/verifyLogin', { data })
+        const response = await this.request.post('https://automationexercise.com/api/verifyLogin', { data });
+        return response;
     }
 
-    async postUserAccount(){
-        
+    async postUserAccount(data:Record<string,any>){
+        const response = await this.request.post('https://automationexercise.com/api/createAccount', { data });
+        return response;
     }
 
 }
