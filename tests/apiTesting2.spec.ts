@@ -125,10 +125,10 @@ test.describe('Automation Exercise', ()=>{
                 firstname: 'John',
                 lastname: 'Doe',
                 company: 'Iberia',
-                address1: 'Calle Marqués de Larios',
+                address1: 'Calle Larios',
                 address2: 'Portal3, 5-1',
                 country: 'Spain',
-                zipcode: 29005,
+                zipcode: 29004,
                 state: 'Málaga',
                 city: 'Málaga',
                 mobile_number: 34910000000
@@ -140,6 +140,38 @@ test.describe('Automation Exercise', ()=>{
     })
 
     test('API 12: DELETE METHOD To Delete User Account', async({ request })=>{
+        const response = await request.delete('https://automationexercise.com/api/deleteAccount', {
+            data: {
+                email: 'test@example.com',
+                password: '12345'
+            }
+        })
+        expect(response.status()).toBe(200);
+        const json = response.json();
+        expect(json).toHaveProperty('Account deleted!');
+    })
 
+    test('API 13: PUT METHOD To Update User Account', async({ request })=>{
+        const response = await request.put('https://automationexercise.com/api/updateAccount', {
+            data: {
+                name:'taro',
+                email: 'test@example.com',
+                password: '54321',
+                title: 'Mrs',
+                birth_date: 1,
+                birth_month: 1,
+                birth_year: 1991,
+                firstname: 'Jane',
+                lastname: 'Does',
+                company: 'Iberdorola',
+                address1: 'Calle Marqués de Larios',
+                address2: 'Portal1, 1-1',
+                country: 'Spain',
+                zipcode: 29005,
+                state: 'Málaga',
+                city: 'Málaga',
+                mobile_number: 34910000001
+            }
+        })
     })
 })
