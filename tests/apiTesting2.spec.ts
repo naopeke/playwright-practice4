@@ -173,5 +173,20 @@ test.describe('Automation Exercise', ()=>{
                 mobile_number: 34910000001
             }
         })
+        expect(response.status()).toBe(200);
+        const json = response.json();
+        expect(json).toHaveProperty('User updated!');
+    })
+
+    test('API 14: GET user account detail by email', async({ request })=>{
+        const response = await request.get('https://automationexercise.com/api/getUserDetailByEmail', {
+            data: {
+                email:'test@example.com'
+            }
+        })
+        expect(response.status()).toBe(200);
+        const json = response.json();
+        expect(json).toHaveProperty('User Detail');
+
     })
 })
