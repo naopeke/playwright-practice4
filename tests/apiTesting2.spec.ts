@@ -31,10 +31,10 @@ test.describe('Automation Exercise', ()=>{
 
     test('API 3: Get All Brands List', async ({ request })=>{
         const response = await productPage.getAllBrands();
-        expect(response.status()).toBe(200);
 
-        const json = await response.json();
-        console.log(json);
+        await productPage.verifyResponse(response, 200);
+
+        await productPage.verifyJson(response);
     })
 
     test('API 4: PUT To All Brands List', async ({ request })=>{
