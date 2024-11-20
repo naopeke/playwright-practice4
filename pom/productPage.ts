@@ -1,10 +1,20 @@
-import { APIRequestContext } from "@playwright/test";
+import { APIRequestContext, APIResponse, expect } from "@playwright/test";
 
 class ProductPage {
     private request : APIRequestContext;
 
     constructor(request: APIRequestContext){
         this.request = request;
+    }
+
+    async verifyResponse(response: APIResponse, statusCode: number){
+        expect(response.status).toBe(statusCode);
+    }
+
+    async verifyJson(response: APIResponse){
+        const json = await response.json();
+        console.log(json);
+        return json;
     }
 
     //1

@@ -15,10 +15,10 @@ test.describe('Automation Exercise', ()=>{
     test('API 1: Get All Products List', async ({ request })=>{
         // const response = await request.get('https://automationexercise.com/api/productsList');
         const response = await productPage.getAllProducts();
-        expect(response.status()).toBe(200);
         
-        const json = await response.json();
-        console.log(json);
+        await productPage.verifyResponse(response, 200);
+        
+        await productPage.verifyJson(response);
     });
 
     test('API 2: POST To All Products List', async({ request})=>{
