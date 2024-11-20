@@ -8,7 +8,7 @@ class ProductPage {
     }
 
     async verifyResponse(response: APIResponse, statusCode: number){
-        expect(response.status).toBe(statusCode);
+        expect(response.status()).toBe(statusCode);
     }
 
     async verifyJson(response: APIResponse){
