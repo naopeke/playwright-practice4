@@ -23,10 +23,10 @@ test.describe('Automation Exercise', ()=>{
 
     test('API 2: POST To All Products List', async({ request})=>{
         const response = await productPage.postToProductsList({});
-        expect (response.status()).toBe(405);
+
+        await productPage.verifyResponse(response, 405);
         
-        const json = await response.json();
-        expect(json).toHaveProperty('This request method is not supported.');
+        await productPage.verifyJsonProperty(response, 'This request method is not supported.');
     })
 
     test('API 3: Get All Brands List', async ({ request })=>{

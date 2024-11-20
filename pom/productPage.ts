@@ -17,6 +17,12 @@ class ProductPage {
         return json;
     }
 
+    async verifyJsonProperty(response: APIResponse, prop: string){
+        const json = await response.json();
+        console.log(json);
+        expect(json).toHaveProperty(prop);
+    }
+
     //1
     async getAllProducts(){
         const response = await this.request.get('https://automationexercise.com/api/productsList');
